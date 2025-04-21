@@ -320,9 +320,10 @@ def _(expr, *o, **kwargs):
 
 @differentiate.register(Div)
 def _(expr, *o, **kwargs):
-    return (postvisitor(expr.operands[0], differentiate, **kwargs) *
-            expr.operands[1] - expr.operands[0] *
-            postvisitor(expr.operands[1], differentiate, **kwargs))\
+    return (postvisitor(expr.operands[0], differentiate,
+                        **kwargs) * expr.operands[1] - expr.
+            operands[0] * postvisitor
+            (expr.operands[1], differentiate, **kwargs)) \
         / Pow((expr.operands[1]), Number(2))
 
 
